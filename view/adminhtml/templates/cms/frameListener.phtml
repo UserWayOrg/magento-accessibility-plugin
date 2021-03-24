@@ -1,0 +1,15 @@
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function () {
+            const childWindow = document.getElementById('userway-frame').contentWindow;
+            window.addEventListener('message', message => {
+                console.log(message);
+                if (message.source !== childWindow) {
+                    return; // Skip message in this event listener
+                }
+            });
+        });
+    })
+</script>

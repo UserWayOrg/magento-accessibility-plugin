@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ @category Magento-2 UserWay Widget Module
+  ~ @package Userway_Widget
+  ~ @copyright Copyright (c) 2021
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Userway\Widget\Block\Widget" name="userway-widget" />
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Userway\Widget\Block\Widget" name="beforebody"  template="Userway_Widget::widget.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,15 @@
+<?php
+/*
+ * @category Magento-2 UserWay Widget Module
+ * @package Userway_Widget
+ * @copyright Copyright (c) 2021
+ */
+
+/**
+ * @var \Userway\Widget\Block\Widget $block
+ */
+?>
+
+<?php if ($block->isStoreWidgetEnabled()): ?>
+    <script src="<?= $block->getScriptUrl() ?>"></script>
+<?php endif; ?>

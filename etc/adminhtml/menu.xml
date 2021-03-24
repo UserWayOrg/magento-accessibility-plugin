@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ @category Magento-2 UserWay Widget Module
+  ~ @package Userway_Widget
+  ~ @copyright Copyright (c) 2021
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Userway_Widget::block"
+             title="UserWay"
+             translate="title"
+             module="Userway_Widget"
+             sortOrder="9999"
+             resource="Userway_Widget::preferences"
+             action="userway/preferences/index"/>
+    </menu>
+</config>
