@@ -2,12 +2,41 @@
     require([
         'jquery'
     ], function ($) {
+
+        const requestUpdate = (url, recordId, accountId) => {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url,
+                    data: {
+                        accountId: accountId,
+                        recordId: recordId
+                    },
+                    type: "POST",
+                    dataType: 'json'
+                }).done(data => resolve(data))
+                    .fail(err => reject(err));
+            })
+        }
+
+        const isPostMessagePayloadValid = (postMessage) => postMessage.data
+            && postMessage.data.account
+            && postMessage.data.account.length > 0;
+
         $(document).ready(function () {
-            const childWindow = document.getElementById('userway-frame').contentWindow;
-            window.addEventListener('message', message => {
-                console.log(message);
-                if (message.source !== childWindow) {
-                    return; // Skip message in this event listener
+            const selector = document.getElementById('userway-frame');
+            const frameContentWindow = selector.contentWindow;
+            const {url, id} = selector.dataset;
+
+            window.addEventListener('message', postMessage => {
+                if (postMessage.source !== frameContentWindow) {
+                    return;
+                }
+
+                if (isPostMessagePayloadValid(postMessage)) {
+                    console.log(postMessage.data);
+                    requestUpdate(url, id, postMessage.data.account)
+                        .then(res => console.log(res))
+                        .catch(err => console.error(err));
                 }
             });
         });

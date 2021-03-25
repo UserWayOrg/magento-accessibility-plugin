@@ -76,4 +76,21 @@ class Preferences extends \Magento\Framework\Model\AbstractModel implements
     {
         return $this->setData(self::STORE_ID_FIELD, $store);
     }
+
+    /**
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->getData(self::ACCOUNT_ID_FIELD);
+    }
+
+    /**
+     * @param string $accountId
+     * @return Preferences
+     */
+    public function setAccountId($accountId)
+    {
+        return $this->setData(self::ACCOUNT_ID_FIELD, $accountId);
+    }
 }

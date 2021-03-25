@@ -13,13 +13,11 @@
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
                 <value id="prod" type="host">*.userway.com</value>
-                <value id="prod" type="host">*.userway.com</value>
             </values>
         </policy>
         <policy id="connect-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
                 <value id="prod" type="host">*.userway.com</value>
             </values>
         </policy>
@@ -27,6 +25,17 @@
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
                 <value id="prod" type="host">*.userway.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="dev" type="host">*.userway.dev</value>
+                <value id="prod" type="host">*.userway.com</value>
+            </values>
+        </policy>
+        <policy id="media-src">
+            <values>
+                <value id="dev" type="host">*.userway.dev</value>
                 <value id="prod" type="host">*.userway.com</value>
             </values>
         </policy>

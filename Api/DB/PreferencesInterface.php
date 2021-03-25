@@ -33,4 +33,8 @@ interface PreferencesInterface
      * @const string
      */
     const STORE_ID_FIELD = 'store_id';
+    /**
+     * @const string
+     */
+    const ACCOUNT_ID_FIELD = 'account_id';
 }

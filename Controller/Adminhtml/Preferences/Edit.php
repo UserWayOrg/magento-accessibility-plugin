@@ -52,7 +52,6 @@ class Edit extends \Magento\Backend\App\Action implements \Userway\Widget\Api\Co
         $this->preferencesResourceModel = $preferencesResourceModel;
     }
 
-
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
      */

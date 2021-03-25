@@ -15,4 +15,39 @@ interface Preferences
      * @return \Userway\Widget\Model\ResourceModel\Preferences
      */
     public function create($storeId, $state);
+
+    /**
+     * @param $storeId
+     * @return bool
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function exist($storeId);
+
+    /**
+     * @param int $id
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function fetch($id);
+
+    /**
+     * @param int $storeId
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function fetchByStore($storeId);
+
+    /**
+     * @param int $storeId
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function deleteByStore($storeId);
+
+    /**
+     * @param int $id
+     * @param int $accountId
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function enable($id, $accountId);
 }

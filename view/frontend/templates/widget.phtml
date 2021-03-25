@@ -11,5 +11,10 @@
 ?>
 
 <?php if ($block->isStoreWidgetEnabled()): ?>
-    <script src="<?= $block->getScriptUrl() ?>"></script>
+    <script>
+        window._userway_config = {
+            account: "p5sFJEtw3C"
+        }
+    </script>
+    <script src="https://cdn.qa.userway.dev/widget.js"></script>
 <?php endif; ?>

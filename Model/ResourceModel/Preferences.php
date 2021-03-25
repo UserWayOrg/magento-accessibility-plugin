@@ -21,6 +21,11 @@ class Preferences extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
     private $objectManager;
 
     /**
+     * @var \Magento\Framework\App\Cache\Manager
+     */
+    private $cacheManager;
+
+    /**
      * Preferences constructor.
      * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $currentDate
@@ -28,11 +33,13 @@ class Preferences extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
     public function __construct(
         \Magento\Framework\Model\ResourceModel\Db\Context $context,
         \Magento\Framework\Stdlib\DateTime\DateTime $currentDate,
-        \Magento\Framework\ObjectManagerInterface $objectManager
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \Magento\Framework\App\Cache\Manager $cacheManager
     ) {
         parent::__construct($context);
         $this->dateTime = $currentDate;
         $this->objectManager = $objectManager;
+        $this->cacheManager = $cacheManager;
     }
 
     /**
@@ -99,6 +106,26 @@ class Preferences extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
         $select = $connection->select();
         $select->from($this->getMainTable())->where("${idField} = ?", $id);
         return $connection->fetchRow($select);
+    }
+
+    /**
+     * @param int $id
+     * @param int $accountId
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function enable($id, $accountId)
+    {
+        $idField = \Userway\Widget\Api\DB\PreferencesInterface::ID;
+        $connection = $this->getConnection();
+        $connection->update($this->getMainTable(), [
+            \Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD => \Userway\Widget\Api\Model\Preferences::STATE_ENABLED,
+            \Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD => $accountId,
+        ], [
+            "${idField} = ?" => $id
+        ]);
+        $this->cacheManager->flush($this->cacheManager->getAvailableTypes());
+        return $this->fetch($id);
     }
 
     /**

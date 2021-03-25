@@ -53,6 +53,14 @@
                 </item>
             </argument>
         </column>
+        <column name="account_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">Account ID</item>
+                </item>
+            </argument>
+        </column>
         <column name="state">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Userway\Widget\Model\Preferences\State</item>

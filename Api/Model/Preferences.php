@@ -54,4 +54,15 @@ interface Preferences extends \Userway\Widget\Api\DB\PreferencesInterface
      * @return \Userway\Widget\Model\Preferences
      */
     public function setStore($store);
+
+    /**
+     * @return int
+     */
+    public function getAccountId();
+
+    /**
+     * @param int $accountId
+     * @return \Userway\Widget\Model\Preferences
+     */
+    public function setAccountId($accountId);
 }

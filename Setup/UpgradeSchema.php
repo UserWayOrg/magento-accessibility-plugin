@@ -59,6 +59,16 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
                         'unsigned' => true
                     ]
                 )->addColumn(
+                    \Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD,
+                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    255,
+                    [
+                        'identity' => false,
+                        'nullable' => true,
+                        'primary' => false,
+                        'unsigned' => true
+                    ]
+                )->addColumn(
                     \Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD,
                     \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                     null,

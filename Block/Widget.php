@@ -35,7 +35,8 @@ class Widget extends \Magento\Framework\View\Element\Template
     public function isStoreWidgetEnabled()
     {
         $model = $this->preferences->fetchByStore($this->_storeManager->getStore()->getId());
-        return (int)$model['state'] === \Userway\Widget\Api\Model\Preferences::STATE_ENABLED;
+        return (int)$model[\Userway\Widget\Api\Model\Preferences::STATE_FIELD] === \Userway\Widget\Api\Model\Preferences::STATE_ENABLED
+            && $model[\Userway\Widget\Api\Model\Preferences::ACCOUNT_ID_FIELD] !== '';
     }
 
     /**
@@ -43,7 +44,7 @@ class Widget extends \Magento\Framework\View\Element\Template
      */
     public function getScriptUrl()
     {
-        return 'https://cdn.qa.userway.dev/widget.js?account=p5sFJEtw3C';
+        return 'https://cdn.qa.userway.dev/widget.js?account=' . $this->getDataAccount();
     }
 
     /**
@@ -51,6 +52,7 @@ class Widget extends \Magento\Framework\View\Element\Template
      */
     public function getDataAccount()
     {
-        return 'p5sFJEtw3C';
+        $model = $this->preferences->fetchByStore($this->_storeManager->getStore()->getId());
+        return $model['account_id'];
     }
 }

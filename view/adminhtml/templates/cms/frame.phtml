@@ -19,5 +19,11 @@
 </style>
 
 <div class="frame-container">
-    <iframe id="userway-frame" scrolling="no" src="<?= $block->getFrameUrl() ?>"></iframe>
+    <iframe id="userway-frame"
+        data-id="<?= $block->getRecordId() ?>"
+        data-url="<?= $block->getEnableUrl() ?>"
+        src="<?= $block->getFrameUrl() ?>"
+        scrolling="no"
+    >
+    </iframe>
 </div>

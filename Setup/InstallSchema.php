@@ -61,6 +61,16 @@ class InstallSchema implements InstallSchemaInterface
                         'unsigned' => true
                     ]
                 )->addColumn(
+                    PreferencesInterface::ACCOUNT_ID_FIELD,
+                    Table::TYPE_TEXT,
+                    255,
+                    [
+                        'identity' => false,
+                        'nullable' => true,
+                        'primary' => false,
+                        'unsigned' => true
+                    ]
+                )->addColumn(
                     PreferencesInterface::STATE_FIELD,
                     Table::TYPE_SMALLINT,
                     null,
