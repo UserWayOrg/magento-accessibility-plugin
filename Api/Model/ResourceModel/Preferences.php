@@ -50,4 +50,12 @@ interface Preferences
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function enable($id, $accountId);
+
+    /**
+     * @param int $id
+     * @param int $state
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function toggleState($id, $state);
 }

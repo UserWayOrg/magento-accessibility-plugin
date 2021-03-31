@@ -85,4 +85,12 @@ class Frame extends \Magento\Framework\View\Element\Template
     {
         return $this->getUrl('userway/preferences/enable');
     }
+
+    /**
+     * @return string
+     */
+    public function getToggleEnableUrl()
+    {
+        return $this->getUrl('userway/preferences/toggle');
+    }
 }

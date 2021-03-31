@@ -129,6 +129,27 @@ class Preferences extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
     }
 
     /**
+     * @param int $id
+     * @param int $state
+     * @return array
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function toggleState($id, $state)
+    {
+        $recordState = (int)$state === 1
+            ? \Userway\Widget\Api\Model\Preferences::STATE_ENABLED : \Userway\Widget\Api\Model\Preferences::STATE_DISABLED;
+        $idField = \Userway\Widget\Api\DB\PreferencesInterface::ID;
+        $connection = $this->getConnection();
+        $connection->update($this->getMainTable(), [
+            \Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD => $recordState
+        ], [
+            "${idField} = ?" => $id
+        ]);
+        $this->cacheManager->flush($this->cacheManager->getAvailableTypes());
+        return $this->fetch($id);
+    }
+
+    /**
      * @param int $storeId
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException

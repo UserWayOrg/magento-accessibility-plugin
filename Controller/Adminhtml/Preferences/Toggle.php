@@ -7,7 +7,7 @@
 
 namespace Userway\Widget\Controller\Adminhtml\Preferences;
 
-class Enable extends \Magento\Backend\App\Action implements \Userway\Widget\Api\Controller\ControllerInterface
+class Toggle extends \Magento\Backend\App\Action implements \Userway\Widget\Api\Controller\ControllerInterface
 {
     /**
      * @const string
@@ -65,11 +65,12 @@ class Enable extends \Magento\Backend\App\Action implements \Userway\Widget\Api\
             $recordId = (int)$this->getRequest()->getParam(
                 \Userway\Widget\Api\Controller\RestControllerInterface::REQUEST_BODY_PARAM_RECORD_ID
             );
-            $accountId = $this->getRequest()->getParam(
-                \Userway\Widget\Api\Controller\RestControllerInterface::REQUEST_BODY_PARAM_ACCOUNT_ID
+            $state = $this->getRequest()->getParam(
+                \Userway\Widget\Api\Controller\RestControllerInterface::REQUEST_BODY_PARAM_STATE,
+                \Userway\Widget\Api\Model\Preferences::STATE_DISABLED
             );
-            if ($recordId > 0 && $accountId !== '') {
-                $this->preferencesResourceModel->enable($recordId, $accountId);
+            if ($recordId > 0) {
+                $this->preferencesResourceModel->toggleState($recordId, $state);
                 $result = \Userway\Widget\Api\Controller\RestControllerInterface::ACTION_SUCCESS;
             }
             $response->setData(['result' => $result]);
