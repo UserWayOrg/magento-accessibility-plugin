@@ -7,7 +7,7 @@
 
 namespace Userway\Widget\Block;
 
-class Widget extends \Magento\Framework\View\Element\Template
+class Widget extends \Magento\Framework\View\Element\Template implements \Userway\Widget\Api\Block\WidgetInterface
 {
     /**
      * @var \Userway\Widget\Model\ResourceModel\Preferences

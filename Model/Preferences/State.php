@@ -15,8 +15,8 @@ class State implements \Magento\Framework\Data\OptionSourceInterface
     public function toOptionArray()
     {
         return [
-            ['value' => \Userway\Widget\Model\Preferences::STATE_ENABLED, 'label' => __('Enabled')],
-            ['value' => \Userway\Widget\Model\Preferences::STATE_DISABLED, 'label' => __('Disabled')]
+            ['value' => \Userway\Widget\Model\Preferences::STATE_ENABLED, 'label' => __('Live')],
+            ['value' => \Userway\Widget\Model\Preferences::STATE_DISABLED, 'label' => __('Not Live')]
         ];
     }
 }

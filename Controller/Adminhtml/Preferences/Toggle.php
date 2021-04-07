@@ -13,6 +13,7 @@ class Toggle extends \Magento\Backend\App\Action implements \Userway\Widget\Api\
      * @const string
      */
     const ADMIN_RESOURCE = 'Userway_Widget::preferences';
+
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */

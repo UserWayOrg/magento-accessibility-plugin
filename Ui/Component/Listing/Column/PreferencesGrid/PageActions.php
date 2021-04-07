@@ -26,7 +26,8 @@ class PageActions extends \Magento\Ui\Component\Listing\Columns\Column
                 $id = $item[\Userway\Widget\Api\DB\PreferencesInterface::ID] ?? 'X';
                 $item[$name]['view'] = [
                     'href' => $this->getContext()->getUrl(self::EDIT_PAGE_URL, ['id' => $id]),
-                    'label' => __('Edit')
+                    'label' => __('Configure'),
+                    'htmlClass' => 'edit-action'
                 ];
             }
         }

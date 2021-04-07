@@ -7,7 +7,7 @@
 
 namespace Userway\Widget\Block;
 
-class Frame extends \Magento\Framework\View\Element\Template
+class Frame extends \Magento\Framework\View\Element\Template implements \Userway\Widget\Api\Block\FrameInterface
 {
     const FRAME_URL = 'https://qa.userway.dev';
 
@@ -52,20 +52,29 @@ class Frame extends \Magento\Framework\View\Element\Template
 
     /**
      * @return string
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getFrameUrl()
     {
         $preferencesModel = $this->coreRegistry->registry('currentRecord');
-        $store = $this->storeManager->getStore($preferencesModel['store_id']);
-        $params = [
+        $store = $this->storeManager->getStore(
+            $preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STORE_ID_FIELD]
+        );
+
+        $frameUrlParams = [
             'storeUrl' => $this->getHost($store->getBaseUrl()),
         ];
+
+        if ($preferencesModel['account_id']) {
+            $frameUrlParams['account_id'] = $preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD];
+        }
+
         $queryParams = implode('&', array_map(
             static function ($v, $k) {
                 return sprintf("%s=%s", $k, $v);
             },
-            $params,
-            array_keys($params)
+            $frameUrlParams,
+            array_keys($frameUrlParams)
         ));
         return self::FRAME_URL . '/apps/magento/?' . $queryParams;
     }

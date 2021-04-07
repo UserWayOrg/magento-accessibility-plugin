@@ -1,0 +1,76 @@
+/*
+ * @category Magento-2 UserWay Widget Module
+ * @package Userway_Widget
+ * @copyright Copyright (c) 2021
+ */
+
+@font-face {
+    font-family: 'userway';
+    src: url('../fonts/userway.eot');
+    src: url('../fonts/userway.eot?#iefix') format('embedded-opentype'), url('../fonts/userway.woff') format('woff'), url('../fonts/userway.ttf') format('truetype'), url('../fonts/userway.svg') format('svg');
+    font-weight: normal;
+    font-style: normal
+}
+
+.admin__menu .level-0#menu-userway-widget-block > a::before {
+    content: '\E900';
+    font-size: 2.2rem;
+    padding-top: 0.1rem;
+    font-family: 'userway';
+}
+
+.userway-preference-action-trigger {
+    text-align: right;
+    width: 200px;
+}
+
+.userway-preference-action-trigger .action-menu-item {
+    background: #0400FF;
+    padding: 7px 25px;
+    font-weight: 600;
+    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.userway-state {
+    position: relative;
+    padding: 0 15px;
+}
+
+.userway-state::before {
+    left: 0;
+    position: absolute;
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 100%;
+    background-color: #A90000;
+    color: #A90000;
+    top: 4px;
+}
+
+.userway-state.userway-state--state-live::before {
+    background-color: #006F03;
+    color: #006F03;
+}
+
+.userway-embed-state {
+    position: relative;
+    padding: 0 25px;
+}
+
+.userway-embed-state:before {
+    content: '';
+    background: url(../icons/userway-script-icon.png) no-repeat;
+    width: 30px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    background-size: 23px;
+}
+
+.userway-embed-state.userway-embed-state--state-injected {
+    color: #006F03;
+}
