@@ -69,6 +69,12 @@ class Frame extends \Magento\Framework\View\Element\Template implements \Userway
             $frameUrlParams['account_id'] = $preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD];
         }
 
+        if ($preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD]) {
+            $frameUrlParams['active'] = (bool)$preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD] ? 'true' : 'false';
+        } else {
+            $frameUrlParams['active'] = 'false';
+        }
+
         $queryParams = implode('&', array_map(
             static function ($v, $k) {
                 return sprintf("%s=%s", $k, $v);
