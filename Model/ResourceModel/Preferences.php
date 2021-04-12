@@ -114,12 +114,12 @@ class Preferences extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb i
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function enable($id, $accountId)
+    public function enable($id, $accountId, $state = \Userway\Widget\Api\Model\Preferences::STATE_ENABLED)
     {
         $idField = \Userway\Widget\Api\DB\PreferencesInterface::ID;
         $connection = $this->getConnection();
         $connection->update($this->getMainTable(), [
-            \Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD => \Userway\Widget\Api\Model\Preferences::STATE_ENABLED,
+            \Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD => $state,
             \Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD => $accountId,
         ], [
             "${idField} = ?" => $id

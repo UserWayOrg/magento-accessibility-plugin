@@ -14,34 +14,21 @@
                     type: 'POST',
                     dataType: 'json'
                 }).done(data => resolve(data))
-                .fail(err => reject(err));
+                    .fail(err => reject(err));
             })
         }
 
-        const requestUpdate = (url, recordId, accountId) =>
-            request(url, {
-                accountId,
-                recordId
-            })
-
-        const requestToggleState = (url, recordId, state) =>
-            request(url, {
-                state,
-                recordId
-            })
-
-        const isPostMessageAccountAction = (postMessage) => postMessage.data
-            && postMessage.data.account
-            && postMessage.data.account.length > 0;
+        const requestUpdateAccountState = (url, recordId, accountId, state) => request(url, {accountId, recordId, state});
+        const requestToggleState = (url, recordId, state) => request(url, {state, recordId});
 
         const isPostMessageAccountToggleAction = (postMessage) => {
-            return postMessage.data
+            return postMessage.data !== undefined
                 && postMessage.data.action
                 && postMessage.data.action === MESSAGE_ACTION_TOGGLE
         }
 
         const isPostMessageSignupAction = (postMessage) => {
-            return postMessage.data
+            return postMessage.data !== undefined
                 && postMessage.data.action
                 && postMessage.data.action === MESSAGE_ACTION_SIGNUP
         }
@@ -56,17 +43,19 @@
                     return;
                 }
 
-                if (isPostMessageAccountAction(postMessage)) {
-                    requestUpdate(url, id, postMessage.data.account)
-                        .then(res => console.log(res))
-                        .catch(err => console.error(err));
-                } else if (isPostMessageAccountToggleAction(postMessage)) {
+                console.log('postMessage -> ', postMessage);
+                console.log('postMessage data -> ', postMessage.data);
+                console.log('postMessage isPostMessageSignupAction -> ', isPostMessageSignupAction(postMessage));
+                console.log('postMessage isPostMessageAccountToggleAction -> ', isPostMessageAccountToggleAction(postMessage));
+
+                if (isPostMessageAccountToggleAction(postMessage)) {
                     const state = postMessage.data.state ? 1 : 0;
                     requestToggleState(toggleUrl, id, state)
                         .then(res => console.log(res))
                         .catch(err => console.error(err));
                 } else if (isPostMessageSignupAction(postMessage)) {
-                    requestUpdate(url, id, postMessage.data.account)
+                    const state = postMessage.data.state ? 1 : 0;
+                    requestUpdateAccountState(url, id, postMessage.data.account, state)
                         .then(res => console.log(res))
                         .catch(err => console.error(err));
                 }

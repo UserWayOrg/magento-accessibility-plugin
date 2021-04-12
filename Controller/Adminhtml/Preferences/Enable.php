@@ -68,8 +68,12 @@ class Enable extends \Magento\Backend\App\Action implements \Userway\Widget\Api\
             $accountId = $this->getRequest()->getParam(
                 \Userway\Widget\Api\Controller\RestControllerInterface::REQUEST_BODY_PARAM_ACCOUNT_ID
             );
+            $state = $this->getRequest()->getParam(
+                \Userway\Widget\Api\Controller\RestControllerInterface::REQUEST_BODY_PARAM_STATE,
+                \Userway\Widget\Api\Model\Preferences::STATE_DISABLED
+            );
             if ($recordId > 0 && $accountId !== '') {
-                $this->preferencesResourceModel->enable($recordId, $accountId);
+                $this->preferencesResourceModel->enable($recordId, $accountId, $state);
                 $result = \Userway\Widget\Api\Controller\RestControllerInterface::ACTION_SUCCESS;
             }
             $response->setData(['result' => $result]);
