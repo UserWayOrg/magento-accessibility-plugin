@@ -39,5 +39,11 @@
                 <value id="prod" type="host">*.userway.com</value>
             </values>
         </policy>
+        <policy id="frame-ancestors">
+            <values>
+                <value id="dev" type="host">*.userway.dev</value>
+                <value id="prod" type="host">*.userway.com</value>
+            </values>
+        </policy>
     </policies>
 </csp_whitelist>

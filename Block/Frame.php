@@ -84,7 +84,7 @@ class Frame extends \Magento\Framework\View\Element\Template implements \Userway
             $frameUrlParams,
             array_keys($frameUrlParams)
         ));
-        return self::FRAME_URL . '/apps/magento/?' . $queryParams;
+        return self::FRAME_URL . '/api/apps/magento/?' . $queryParams;
     }
 
     /**
