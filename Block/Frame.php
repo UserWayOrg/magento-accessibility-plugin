@@ -65,17 +65,20 @@ class Frame extends \Magento\Framework\View\Element\Template implements \Userway
             'storeUrl' => $this->getHost($store->getBaseUrl()),
         ];
 
-        if ($preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD]) {
+        if (isset($preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD])
+            && $preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD] !== '') {
             $frameUrlParams[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD]
                 = $preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::ACCOUNT_ID_FIELD];
+
+            if (isset($preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD])) {
+                $frameUrlParams['active']
+                    = (int)$preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD] === 1 ? 'true' : 'false';
+            } else {
+                $frameUrlParams['active'] = 'false';
+            }
         }
 
-        if ($preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD]) {
-            $frameUrlParams['active']
-                = (bool)$preferencesModel[\Userway\Widget\Api\DB\PreferencesInterface::STATE_FIELD] ? 'true' : 'false';
-        } else {
-            $frameUrlParams['active'] = 'false';
-        }
+
 
         $queryParams = implode('&', array_map(
             static function ($v, $k) {

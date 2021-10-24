@@ -21,8 +21,9 @@ class Widget extends \Magento\Framework\View\Element\Template implements \Userwa
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        \Userway\Widget\Model\ResourceModel\Preferences $preferences
-    ) {
+        \Userway\Widget\Model\ResourceModel\Preferences  $preferences
+    )
+    {
         $this->preferences = $preferences;
         parent::__construct($context);
     }
@@ -35,8 +36,11 @@ class Widget extends \Magento\Framework\View\Element\Template implements \Userwa
     public function isStoreWidgetEnabled()
     {
         $model = $this->preferences->fetchByStore($this->_storeManager->getStore()->getId());
-        return (int)$model[\Userway\Widget\Api\Model\Preferences::STATE_FIELD] === \Userway\Widget\Api\Model\Preferences::STATE_ENABLED
-            && $model[\Userway\Widget\Api\Model\Preferences::ACCOUNT_ID_FIELD] !== '';
+
+        return isset($model[\Userway\Widget\Api\Model\Preferences::STATE_FIELD])
+            && (int)$model[\Userway\Widget\Api\Model\Preferences::STATE_FIELD] === \Userway\Widget\Api\Model\Preferences::STATE_ENABLED
+            && isset($model[\Userway\Widget\Api\Model\Preferences::ACCOUNT_ID_FIELD])
+            && (string)$model[\Userway\Widget\Api\Model\Preferences::ACCOUNT_ID_FIELD] !== '';
     }
 
     /**
@@ -53,6 +57,6 @@ class Widget extends \Magento\Framework\View\Element\Template implements \Userwa
     public function getDataAccount()
     {
         $model = $this->preferences->fetchByStore($this->_storeManager->getStore()->getId());
-        return $model['account_id'];
+        return $model[\Userway\Widget\Api\Model\Preferences::ACCOUNT_ID_FIELD];
     }
 }
