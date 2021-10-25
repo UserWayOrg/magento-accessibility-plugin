@@ -48,7 +48,7 @@ class Widget extends \Magento\Framework\View\Element\Template implements \Userwa
      */
     public function getScriptUrl()
     {
-        return 'https://cdn.qa.userway.dev/widget.js?account=' . $this->getDataAccount();
+        return 'https://cdn.userway.org/widget.js?account=' . $this->getDataAccount();
     }
 
     /**
