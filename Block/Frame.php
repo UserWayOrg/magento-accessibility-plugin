@@ -9,7 +9,7 @@ namespace Userway\Widget\Block;
 
 class Frame extends \Magento\Framework\View\Element\Template implements \Userway\Widget\Api\Block\FrameInterface
 {
-    const FRAME_URL = 'https://qa.userway.dev';
+    const FRAME_URL = 'https://api.qa.userway.dev';
 
     /**
      * @var \Magento\Framework\Registry
