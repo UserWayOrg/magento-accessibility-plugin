@@ -21,6 +21,11 @@ interface WidgetInterface
     public function getDataAccount();
 
     /**
+     * @return string
+     */
+    public function getInlineScriptUrl();
+
+    /**
      * @return bool
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
