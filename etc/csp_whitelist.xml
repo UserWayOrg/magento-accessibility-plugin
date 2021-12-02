@@ -41,6 +41,22 @@
                 <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
+        <policy id="font-src">
+            <values>
+                <value id="dev" type="host">*.userway.dev</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="dev" type="host">*.userway.dev</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
+            </values>
+        </policy>
         <policy id="media-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
