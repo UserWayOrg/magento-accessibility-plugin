@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-  ~ @category Magento-2 UserWay Widget Module
-  ~ @package Userway_Widget
-  ~ @copyright Copyright (c) 2021
+  ~  * @category Magento-2 UserWay Widget Module
+  ~  * @package Userway_Widget
+  ~  * @copyright Copyright (c) 2021
   -->
 
 <csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -12,37 +12,49 @@
         <policy id="frame-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
         <policy id="connect-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
         <policy id="script-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
         <policy id="img-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
         <policy id="media-src">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
         <policy id="frame-ancestors">
             <values>
                 <value id="dev" type="host">*.userway.dev</value>
-                <value id="prod" type="host">*.userway.com</value>
+                <value id="prod" type="host">*.userway.org</value>
+                <value id="dev-home" type="host">userway.dev</value>
+                <value id="prod-home" type="host">userway.org</value>
             </values>
         </policy>
     </policies>

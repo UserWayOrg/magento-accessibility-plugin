@@ -1,8 +1,8 @@
 <?php
 /*
- * @category Magento-2 UserWay Widget Module
- * @package Userway_Widget
- * @copyright Copyright (c) 2021
+ *  * @category Magento-2 UserWay Widget Module
+ *  * @package Userway_Widget
+ *  * @copyright Copyright (c) 2021
  */
 
 namespace Userway\Widget\Controller\Adminhtml\Preferences;
@@ -38,6 +38,8 @@ class Edit extends \Magento\Backend\App\Action implements \Userway\Widget\Api\Co
      * Index constructor.
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param \Userway\Widget\Model\ResourceModel\Preferences $preferencesResourceModel
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -54,6 +56,7 @@ class Edit extends \Magento\Backend\App\Action implements \Userway\Widget\Api\Co
 
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function execute()
     {
