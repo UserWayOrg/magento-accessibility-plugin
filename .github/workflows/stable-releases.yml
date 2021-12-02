@@ -17,4 +17,3 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           root: ".VERSION"
           regex_pattern: "(\\d+\\.\\d+\\.\\d+)"
-          tag_prefix: "Stable-v"
