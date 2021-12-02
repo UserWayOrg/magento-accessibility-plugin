@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+  ~  * @category Magento-2 UserWay Widget Module
+  ~  * @package Userway_Widget
+  ~  * @copyright Copyright (c) 2021
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <csp>
+            <policies>
+                <storefront>
+                    <frame-ancestors>
+                        <policy_id>frame-ancestors</policy_id>
+                        <self>1</self>
+                        <inline>0</inline>
+                        <eval>0</eval>
+                        <dynamic>0</dynamic>
+                    </frame-ancestors>
+                </storefront>
+            </policies>
+        </csp>
+    </default>
+</config>
