@@ -1,8 +1,8 @@
 <?php
 /*
- * @category Magento-2 UserWay Widget Module
- * @package Userway_Widget
- * @copyright Copyright (c) 2021
+ *  * @category Magento-2 UserWay Widget Module
+ *  * @package Userway_Widget
+ *  * @copyright Copyright (c) 2021
  */
 
 namespace Userway\Widget\Block;
@@ -77,8 +77,6 @@ class Frame extends \Magento\Framework\View\Element\Template implements \Userway
                 $frameUrlParams['active'] = 'false';
             }
         }
-
-
 
         $queryParams = implode('&', array_map(
             static function ($v, $k) {

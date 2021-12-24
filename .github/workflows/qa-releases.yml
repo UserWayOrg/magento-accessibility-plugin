@@ -2,10 +2,10 @@ name: QA-Release
 
 on:
   push:
-    paths:
-      - .VERSION
     branches:
       - qa
+    paths:
+      - '.VERSION'
 
 jobs:
   build:
@@ -17,4 +17,4 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           root: ".VERSION"
           regex_pattern: "(\\d+\\.\\d+\\.\\d+)"
-          tag_prefix: "QA-v"
+          tag_suffix: "-qa"
